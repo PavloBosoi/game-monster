@@ -32,6 +32,7 @@
 
 		<main class="content">
 			<section class="game" id="app-monster">
+
 				<div class="title-main">
 					<h2>Game Monster</h2>
 				</div>
@@ -49,10 +50,12 @@
 
 				<div v-else="" class="game-btn-bars">
 					<a @click="attack($event)" class="game-btn" href="#">Attack</a>
-					<a @click="attack($event)" class="game-btn" href="#">Special Attack</a>
-					<a class="game-btn" href="#">Heal</a>
+					<a @click="attack($event,special)" class="game-btn" href="#">Special Attack</a>
+					<a @click="heal" class="game-btn" href="#">Heal</a>
 					<a @click="startGame" class="game-btn" href="#">Give Up</a>
 				</div>
+
+				<div class="game-info-bar" v-html="result"></div>
 			</section>
 		</main><!-- .content -->
 

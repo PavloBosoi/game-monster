@@ -70,3 +70,13 @@ section{
         background-color: #ccc;
     }
 }
+
+.game-info-bar{
+    @include ptr(margin,50 50 0);
+    span{
+        display: block;
+        @include ptr(margin,20 0 0);
+        @include ptr(padding,10 20);
+        color: #fff;
+    }
+}
