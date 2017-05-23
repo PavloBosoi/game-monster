@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+//= template/head.html
+
+	<body>
+
+	<div class="wrapper">
+
+		//= template/header.html
+
+		<main class="content">
+			<section class="game" id="app-monster">
+				<div class="title-main">
+					<h2>Game Monster</h2>
+				</div>
+
+				<div class="game-health-bars">
+					<div v-for="(heal,index) in health" class="game-health-bar">
+						<h3>{{ heal.name }}<span>{{ heal.statusGame }}</span></h3>
+						<p><i :style="{width: heal.line + '%'}"></i><span>{{ heal.line }}</span></p>
+					</div>
+				</div>
+
+				<div v-if="!showBar" class="game-btn-bars">
+					<a @click="startGame" class="game-btn" href="#">New Game</a>
+				</div>
+
+				<div v-else="" class="game-btn-bars">
+					<a @click="attack($event)" class="game-btn" href="#">Attack</a>
+					<a @click="attack($event)" class="game-btn" href="#">Special Attack</a>
+					<a class="game-btn" href="#">Heal</a>
+					<a @click="startGame" class="game-btn" href="#">Give Up</a>
+				</div>
+			</section>
+		</main><!-- .content -->
+
+	</div><!-- .wrapper -->
+
+	//= template/footer.html
+
+	</body>
+</html>

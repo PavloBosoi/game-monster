@@ -1,0 +1,72 @@
+/* ==|====================
+   Module/Sections
+   ======================= */
+
+section{
+    height: 100vh;
+}
+.game-health-bars{
+    display: flex;
+    @include ptr(margin,50 0 0 0);
+}
+.game-health-bar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    @include ptr(padding,20 50);
+    h3{
+        text-transform: uppercase;
+        font-weight: bold;
+        @include ptr(margin,0 0 20 0);
+        span{
+            color: $color1;
+        }
+    }
+    p{
+        text-align: center;
+        font-weight: bold;
+        background-color: #ccc;
+        width: 100%;
+        border-radius: 25px;
+        overflow: hidden;
+        position: relative;
+        i{
+            display: block;
+            background-color: green;
+            @include ptr(padding,10 0);
+            border-radius: 25px;
+            @include ptr(height,50);
+            transition: $linear;
+        }
+        span{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+    }
+}
+.game-btn-bars{
+    display: flex;
+    @include ptr(margin,50 0 0 0);
+    justify-content: center;
+}
+.game-btn{
+    display: block;
+    width: 33.3333%;
+    @include ptr(height,50);
+    @include ptr(line-height,50);
+    color: $color1;
+    background-color: $color3;
+    text-decoration: none;
+    @include ptr(margin,0 50);
+    border-radius: 25px;
+    text-align: center;
+    transition: $linear;
+    &:hover{
+        background-color: #ccc;
+    }
+}
