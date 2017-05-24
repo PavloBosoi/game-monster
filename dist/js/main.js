@@ -8,7 +8,7 @@ function ready(){
             showBar: false,
             special: false,
             display : [],
-            result: '',
+            colors: [],
             health: [
                 {
                     name: 'you',
@@ -43,10 +43,13 @@ function ready(){
             },
             startGame: function() {
                 this.showBar = !this.showBar;
+                this.colors = [];
                 for(var i = 0; i < this.health.length; i++){
+                    this.colors.push(this.getRandomColor());
+
                     this.health[i].line = 100;
                     this.health[i].statusGame = '';
-                    this.result = '';
+                    this.display = [];
                 }
             },
             attack: function(event,special){
@@ -97,23 +100,14 @@ function ready(){
 
                     displayInfo.hurt = curRandom;
                     displayInfo.name = this.health[i].name;
-
+                    displayInfo.color = this.colors[i];
 
                     display.push(displayInfo);
                 }
                 this.display = display;
-                this.info();
             },
             heal: function() {
 
-            },
-            info: function() {
-                if(this.display.length != 0){
-                    this.result = '';
-                    for(var i = 0; i < this.display.length; i++){
-                        this.result += '<span style="background-color: '+this.getRandomColor()+'">Name: '+this.display[i].name+'<br/>Hurt: '+this.display[i].hurt+'</span>';
-                    }
-                }
             },
             getRandomColor: function() {
                 var letters = '0123456789ABCDEF';

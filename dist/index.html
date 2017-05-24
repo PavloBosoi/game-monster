@@ -33,29 +33,50 @@
 		<main class="content">
 			<section class="game" id="app-monster">
 
-				<div class="title-main">
-					<h2>Game Monster</h2>
-				</div>
-
-				<div class="game-health-bars">
-					<div v-for="(heal,index) in health" class="game-health-bar">
-						<h3>{{ heal.name }}<span>{{ heal.statusGame }}</span></h3>
-						<p><i :style="{width: heal.line + '%'}"></i><span>{{ heal.line }}</span></p>
+				<transition name="fade" mode="out-in" appear
+							enter-active-class="animated fadeIn"
+							leave-active-class="animated fadeOut"
+				>
+					<div class="title-main">
+						<h2>Game Monster</h2>
 					</div>
-				</div>
+				</transition>
 
-				<div v-if="!showBar" class="game-btn-bars">
-					<a @click="startGame" class="game-btn" href="#">New Game</a>
-				</div>
+				<transition name="fade" mode="out-in" appear
+							enter-active-class="animated zoomIn"
+							leave-active-class="animated zoomOut"
+				>
+					<div class="game-health-bars">
+						<div v-for="(heal,index) in health" class="game-health-bar">
+							<h3>{{ heal.name }}<span>{{ heal.statusGame }}</span></h3>
+							<p><i :style="{width: heal.line + '%'}"></i><span>{{ heal.line }}</span></p>
+						</div>
+					</div>
+				</transition>
 
-				<div v-else="" class="game-btn-bars">
-					<a @click="attack($event)" class="game-btn" href="#">Attack</a>
-					<a @click="attack($event,special)" class="game-btn" href="#">Special Attack</a>
-					<a @click="heal" class="game-btn" href="#">Heal</a>
-					<a @click="startGame" class="game-btn" href="#">Give Up</a>
-				</div>
+				<transition name="fade" mode="out-in" appear
+							enter-active-class="animated zoomIn"
+							leave-active-class="animated zoomOut"
+				>
+					<div v-if="!showBar" class="game-btn-bars" key="new-game-btn">
+						<a @click="startGame" class="game-btn" href="#">New Game</a>
+					</div>
 
-				<div class="game-info-bar" v-html="result"></div>
+					<div v-else="" class="game-btn-bars" key="game-btns">
+						<a @click="attack($event)" class="game-btn" href="#">Attack</a>
+						<a @click="attack($event,special)" class="game-btn" href="#">Special Attack</a>
+						<a @click="heal" class="game-btn" href="#">Heal</a>
+						<a @click="startGame" class="game-btn" href="#">Give Up</a>
+					</div>
+				</transition>
+
+					<div class="game-info-bar">
+						<transition-group tag="ul" name="fade" mode="out-in"
+										  enter-active-class="animated jello"
+										  leave-active-class="animated fadeOut">
+							<li v-for="(item,index) in display" :key="item" :style="{backgroundColor: item.color}"><span>Name: {{item.name}}</span><i>Hurt: {{item.hurt}}</i></li>
+						</transition-group>
+					</div>
 			</section>
 		</main><!-- .content -->
 

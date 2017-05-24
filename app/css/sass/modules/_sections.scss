@@ -73,10 +73,34 @@ section{
 
 .game-info-bar{
     @include ptr(margin,50 50 0);
-    span{
+    li{
         display: block;
         @include ptr(margin,20 0 0);
         @include ptr(padding,10 20);
         color: #fff;
+        border-radius: 45px;
+        span{
+            display: block;
+        }
+        i{
+            font-style: normal;
+        }
     }
 }
+
+
+
+
+.effect-start{
+    /*position: relative;
+    top: -50px;
+    opacity: 0;*/
+}
+
+/*
+.fade-enter{
+    background-color: #000;
+}
+.fade-enter-active{
+    transition: $linear;
+}*/
